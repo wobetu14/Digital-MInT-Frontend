@@ -1,0 +1,77 @@
+.applists__card{
+    align-items: center;
+    /* height: 450px; */
+    max-width: 320px;
+    margin: 15px;
+    border-radius: 10px;
+    background-color:white;
+    transition: all 455ms;
+    box-shadow: 0px 0px 1px 1px rgb(216, 214, 214);
+    
+}
+
+.applists__card:hover{
+    box-shadow: 0px 0px 8px 8px rgb(216, 214, 214);
+}
+
+
+.applists__appname{
+    color:#006eb8;
+    padding-bottom: 20px;
+    font-family:Arial, Helvetica, sans-serif;
+    line-height: 1.5em;
+    text-align: left;
+  }
+
+  .applists__cardheader{
+      margin: 0;
+      padding: 0;
+  }
+
+  .image{
+      max-width: 320px;
+      height: 200px;
+       border-top-left-radius: 5px;
+       border-top-right-radius: 5px;
+  }
+
+  .applists__cardbody{
+    margin: 15px;
+    font-size: 16px;
+    font-family:Arial, Helvetica, sans-serif;
+    line-height: 1.5em;
+    /* padding-bottom: 100px; */
+  }
+
+  .appinfo__readmore{
+    margin-top: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
+    align-items: center;
+    max-width: 500px;
+    text-align: right;
+  }
+
+  .link_readmore{
+    color: #006eb8;
+    border: solid 1px rgb(216, 214, 214);
+    /* box-shadow: 0px 0px 1px 1px rgb(216, 214, 214); */
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: all 455ms;
+  }
+
+  .link_readmore:hover{
+    color: white;
+    background-color: #006eb8;
+    border: solid 1px #006eb8;
+    /* box-shadow: 0px 0px 3px 3px #006eb8; */
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+  }

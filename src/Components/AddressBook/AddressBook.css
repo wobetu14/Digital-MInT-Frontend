@@ -1,0 +1,23 @@
+.addressbook_containers{
+    background-color: white;
+    margin: 15px;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.addressbook_header_officename{
+    color:#006eb8;
+    padding-bottom: 15px;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 2em;
+    text-align: left;
+    text-align: center;
+}
+
+.addressbook_body{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    line-height: 2em;
+}

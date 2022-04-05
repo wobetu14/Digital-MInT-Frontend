@@ -1,0 +1,19 @@
+.notices_container{
+    margin: 30px;
+    padding-top: 20px;
+    padding-left: 20%;
+}
+
+.notices__list{
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    padding: 5px;
+    flex-wrap: wrap;
+}
+
+.notice_header{
+    color: #006eb8;
+    padding-left: 200px;
+    margin-top: 70px;
+}

@@ -1,0 +1,51 @@
+.app_header{
+    margin-left: 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 10px;
+}
+
+.app_logo{
+  width: 40%;
+  margin-top: 0px;
+}
+
+.app_menu{
+    width: 60%;
+    /* margin-right: 0px; */
+    margin-top: 5px;
+}
+
+ul{
+    list-style-type: none;
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    padding-right: 90px; ;
+}
+
+a{
+    font-size: 15px;
+    margin-left: 10px;
+    font-weight:lighter;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    color: #006eb8;
+    padding: 15px;
+
+    transition: all 455ms ease-out;
+}
+
+a:hover{
+    font-size: 15px;
+    margin-left: 10px;
+    font-weight: lighter;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    background-color:#006eb8;
+    color: white;
+    border-radius: 5px;
+    padding: 15px;
+}

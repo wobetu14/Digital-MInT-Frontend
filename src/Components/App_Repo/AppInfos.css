@@ -1,0 +1,36 @@
+.appinfos{
+    padding-top: 20px;
+}
+
+.appinfos__list{
+    display: flex;
+    flex-direction: row;
+    justify-content:start;
+    padding: 5px;
+    flex-wrap: wrap;
+}
+
+.appinfos__header2{
+    color: #006eb8;
+    padding-left: 15px;
+    font-size: 24px;
+    margin-top: 70px;
+}
+
+.form_appName{
+    margin: 0px;
+    padding: 20px;
+    text-align: center;
+}
+
+.textAppName{
+    width: 600px;
+    font-size: 20px;
+    color: #006eb8;
+    font-family:Arial, Helvetica, sans-serif;
+    border-radius: 50px;
+    border: 1px solid #006eb8;
+    border-color: #006eb8;
+    padding: 15px;
+    background-color:white;
+}

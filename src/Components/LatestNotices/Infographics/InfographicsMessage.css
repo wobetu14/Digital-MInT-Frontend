@@ -1,0 +1,19 @@
+.infographics_content{
+  align-items: center;
+  margin: 15px;
+  padding: 0px;
+  background-color:white;
+  transition: all 455ms;
+  box-shadow: 0px 0px 0.5px 0.5px rgb(216, 214, 214); 
+  object-fit: contain;
+  text-align: center;
+}
+
+.infographics_content:hover{
+    box-shadow: 0px 0px 1px 1px rgb(216, 214, 214);
+}
+
+.infographics_image{
+    max-width: 425px;
+    border-radius: 0px;
+}
