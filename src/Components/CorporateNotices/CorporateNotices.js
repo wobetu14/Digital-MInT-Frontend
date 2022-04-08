@@ -1,5 +1,6 @@
 import React from 'react'
 import { useEffect, useState } from 'react';
+import { rootURI } from '../rootURLs/root_uri';
 import CorporateNotice from './CorporateNotice';
 import './CorporateNotices.css';
 
@@ -12,7 +13,7 @@ function CorporateNotices() {
     }, []);
 
     const fetchCorporateNoticesData = async () => {
-      const url = 'http://192.168.8.155/mint-intranet/public/api/corporate_notices';
+      const url = rootURI+'/corporate_notices';
       const response = await fetch(url);
       const data = await response.json();
       setCorporateNotices(data);

@@ -9,7 +9,7 @@ function AddressBook({address:{office_name_am, office_name_en, office_email,
     <div>
        <div className='addressbook_containers'>
            <div className='addressbook_header_officename'>
-           <h2>{office_name_am} ({office_name_en})</h2>
+           <h2>{office_name_am} <br /> {office_name_en}</h2>
            </div>
            <div className='addressbook_body'>
                <div className='addressbook_detail'>

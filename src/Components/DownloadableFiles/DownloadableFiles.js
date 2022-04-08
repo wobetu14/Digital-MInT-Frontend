@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { rootURI } from '../rootURLs/root_uri';
 import DownloadableFile from './DownloadableFile';
 
 function DownloadableFiles() {
@@ -10,7 +11,7 @@ function DownloadableFiles() {
      }, []);
 
      const fetchFilesData = async () => {
-        const url = 'http://192.168.8.155/mint-intranet/public/api/downloadable_files';
+        const url = rootURI+'/downloadable_files';
         const response = await fetch(url);
         const data = await response.json();
         setDownloadableFiles(data);
@@ -21,7 +22,7 @@ function DownloadableFiles() {
       const fileName = e.target.value;
       setFileTitle(fileName);
       if(fileName){
-        const url = `http://192.168.8.155/mint-intranet/public/api/downloadable_files/${fileName}`;
+        const url = `${rootURI}/downloadable_files/${fileName}`;
         const response = await fetch(url);
         if(response){
           const searchFilesData = await response.json();

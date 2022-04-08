@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import AppLists from './AppLists';
 import './AppInfos.css'
+import { rootURI } from '../rootURLs/root_uri';
 
 function AppInfos() {
     const [appsInfo, setAppsInfo]=useState([]);
@@ -11,7 +12,8 @@ function AppInfos() {
     }, []);
 
     const fetchAppsData = async () => {
-      const url = 'http://192.168.8.155/mint-intranet/public/api/all-apps';
+      const url = rootURI+'/all-apps';
+      console.log(url);
       const response = await fetch(url);
       const data = await response.json();
       setAppsInfo(data);
@@ -22,7 +24,7 @@ function AppInfos() {
     const app_name = e.target.value;
     setAppName(app_name);
     if(app_name){
-      const url = `http://192.168.8.155/mint-intranet/public/api/app/${app_name}`;
+      const url = `${rootURI}/app/${app_name}`;
       const response = await fetch(url);
       if(response){
         const searchAppData = await response.json();

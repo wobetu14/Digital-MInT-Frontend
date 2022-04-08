@@ -11,7 +11,7 @@ function LatestNotices() {
     }, []);
 
     const fetchLatestNoticesData = async () => {
-      const url = 'http://192.168.8.155/mint-intranet/public/api/side_notices';
+      const url = 'http://192.168.8.186/mint-intranet/public/api/side_notices';
       const response = await fetch(url);
       const data = await response.json();
       setLatestNotices(data);

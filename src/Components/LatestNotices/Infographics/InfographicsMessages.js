@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { rootURI } from '../../rootURLs/root_uri';
 import InfographicsMessage from './InfographicsMessage';
 
 function InfographicsMessages() {
@@ -9,7 +10,7 @@ function InfographicsMessages() {
      }, []);
  
      const fetchInfographicsMessages = async () => {
-       const url = 'http://192.168.8.155/mint-intranet/public/api/infographics_message_displays';
+       const url = rootURI+'/infographics_message_displays';
        const response = await fetch(url);
        const data = await response.json();
        setInfographicsMsg(data);

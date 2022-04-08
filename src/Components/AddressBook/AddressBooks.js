@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
+import { rootURI } from '../rootURLs/root_uri';
 import AddressBook from './AddressBook';
 import './AddressBooks.css';
 
@@ -11,7 +12,7 @@ function AddressBooks() {
      }, []);
 
      const fetchAddressesData = async () => {
-        const url = 'http://192.168.8.155/mint-intranet/public/api/address_book';
+        const url = rootURI+'/address_book';
         const response = await fetch(url);
         const data = await response.json();
         setAddresses(data);
@@ -22,7 +23,7 @@ function AddressBooks() {
       const directorOfficeName = e.target.value;
       setDirectorateName(directorOfficeName);
       if(directorOfficeName){
-        const url = `http://192.168.8.155/mint-intranet/public/api/address_book/${directorOfficeName}`;
+        const url = `${rootURI}/address_book/${directorOfficeName}`;
         const response = await fetch(url);
         if(response){
           const searchAppData = await response.json();

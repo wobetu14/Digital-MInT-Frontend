@@ -1,6 +1,7 @@
 import { faCloudArrowDown, faCloudDownload, faDownload, faFileDownload } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
+import { downloadable_files } from '../rootURLs/root_uri'
 import './DownloadableFiles.css'
 
 function DownloadableFile({downloadableFile:{file_title, file_description, 
@@ -21,7 +22,7 @@ file_author, file_owner, file_name, created_at, updated_at}}) {
                 
                 
                     <div style={{ textAlign:'right' }}>
-                        <a className='download_link' href={`http://192.168.8.155/mint-intranet/public/downloadable_files/${file_name}`}>
+                        <a className='download_link' href={`${downloadable_files + file_name}`}>
                         Download File &nbsp;
                         <FontAwesomeIcon icon={faDownload} />
                         </a>

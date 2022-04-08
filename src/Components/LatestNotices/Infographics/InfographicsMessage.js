@@ -1,4 +1,5 @@
 import React from 'react'
+import { infographics_displays } from '../../rootURLs/root_uri'
 import './InfographicsMessage.css'
 
 function InfographicsMessage({infographicsMessage:{ infographics_subject,
@@ -7,7 +8,7 @@ function InfographicsMessage({infographicsMessage:{ infographics_subject,
 <div>
 <div className="infographics_container">
    <div className='infographics_content'>
-    <img className='infographics_image' alt='' src={`http://192.168.8.155/mint-intranet/public/infographics_displays/${image_path}`}/>     
+    <img className='infographics_image' alt='' src={`${infographics_displays + image_path}`}/>     
    </div>
 </div>
 </div>
