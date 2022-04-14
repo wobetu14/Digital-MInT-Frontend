@@ -1,0 +1,77 @@
+/* Style to create new app Information UI */
+.appinfos_form_title{
+    color: #006eb8;
+    padding-left: 15px;
+    font-size: 24px;
+    margin-top: 70px;
+    margin-left:130px;
+}
+
+.form_container{
+    padding: 15px;
+    margin: 15px;
+}
+
+.form_element{
+    width: 500px;
+    font-size: 20px;
+    /* color: #006eb8; */
+    font-family:Arial, Helvetica, sans-serif;
+    border: 1px solid #006eb8;
+    border-color: #006eb8;
+    margin-top: 10px;
+    padding: 15px;
+    background-color:white;
+}
+
+.form_submit_btn{
+    color: white;
+    background-color: #16A085;
+    border: solid 1px rgb(216, 214, 214);
+    font-size: 20px;
+    padding: 15px;
+    margin-top: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: all 455ms; 
+}
+
+.form_submit_btn:hover{
+    cursor: pointer;
+    color: white;
+    background-color: #006eb8;
+    border: solid 1px rgb(216, 214, 214);
+    font-size: 20px;
+    padding: 15px;
+    margin-top: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.successMsg{
+    color: white;
+    background-color: 16A085;
+    padding: 10px;
+    font-size: 20px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.file_details{
+    background-color:#EAECEE;
+    font-size: 16px;
+    line-height: 2em;
+    margin-top: 20px;
+    padding: 20px;
+    max-width: 500px;
+}
+
+.image_display{
+      max-width: 320px;
+      max-height: 200px;
+      object-fit: contain;
+}

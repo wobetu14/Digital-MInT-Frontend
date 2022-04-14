@@ -13,7 +13,6 @@ function AppInfos() {
 
     const fetchAppsData = async () => {
       const url = rootURI+'/all-apps';
-      console.log(url);
       const response = await fetch(url);
       const data = await response.json();
       setAppsInfo(data);
@@ -40,6 +39,7 @@ function AppInfos() {
   return (
     <div className='appinfos'>
       <h1 className='appinfos__header2'>MInT Digital Services</h1>
+          
           <form className='form_appName'>
               <input
                 className='textAppName'
@@ -51,6 +51,7 @@ function AppInfos() {
                 onChange={searchAppInfo}
               />
           </form>
+
       <div className='appinfos__list'>
       {
           appsInfo.map((appInfo)=>(

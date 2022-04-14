@@ -1,9 +1,9 @@
 .notice_container{
     align-items: center;
-    height: 350px;
+    /* height: 350px; */
     max-width: 700px;
     margin: 15px;
-    padding: 40px;
+    padding: 30px;
     border-radius: 10px;
     background-color:white;
     transition: all 455ms;

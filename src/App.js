@@ -8,8 +8,10 @@ import PageNotFound from './Components/PageNotFound/PageNotFound';
 import LatestNotices from './Components/LatestNotices/LatestNotices';
 import AddressBooks from './Components/AddressBook/AddressBooks';
 import CreateNewAppInfo from './Components/App_Repo/CreateNewAppInfo';
-import DownloadableFile from './Components/DownloadableFiles/DownloadableFile';
 import DownloadableFiles from './Components/DownloadableFiles/DownloadableFiles';
+import CreateNewNotice from './Components/CorporateNotices/CreateNewNotice';
+import CreateNewDownloadables from './Components/DownloadableFiles/CreateNewDownloadables';
+import CreateNewInfograficMessage from './Components/LatestNotices/Infographics/CreateNewInfograficMessage';
 
 function App() {
   return (
@@ -19,6 +21,7 @@ function App() {
           <BrowserRouter>
             <AppHeader />
               <Routes>
+                {/* End user lever routes */}
                 <Route path='/' element={<AppInfos />} />
                 <Route path='/address-book' element={<AddressBooks />} />
                 <Route path='/corporate-notices' element={<CorporateNotices />} />
@@ -26,8 +29,10 @@ function App() {
                 <Route path='*' element={<PageNotFound />} />
 
                 {/* Administrative Routes */}
-
-                <Route path='/create-service' element={<CreateNewAppInfo/>} />
+                <Route path='/create_service' element={<CreateNewAppInfo/>} />
+                <Route path='/create_notice' element={<CreateNewNotice/>} />
+                <Route path='/upload_file' element={<CreateNewDownloadables/>} />
+                <Route path='/create_infographic_message' element={<CreateNewInfograficMessage />} />
               </Routes>
           </BrowserRouter>
           <Outlet />

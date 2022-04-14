@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios';
+import { rootURI } from '../rootURLs/root_uri';
+import '../FormStyles/FormStyles.css';
 
 function CreateNewAppInfo() {
 
@@ -7,7 +9,9 @@ function CreateNewAppInfo() {
     const [appDescription, setAppDescription]=useState('');
     const [appIpAddress, setAppIpAddress]=useState('');
     const [appURL, setAppURL]=useState('');
-    const [imageThumbnail, setImageThumbnail]=useState(null);
+    const [imageThumbnail, setImageThumbnail]=useState('');
+
+    const [successMsg, setSuccessMsg]=useState('');
 
     const onAppNameChange=(e)=>{
         const getAppName=e.target.value;
@@ -30,42 +34,37 @@ function CreateNewAppInfo() {
     }
 
     const onImagethumbnailChange=(e)=>{
-        const getImageThumbnail=e.target.files[0];
-        setImageThumbnail(getImageThumbnail);
+        const image=e.target.files[0];
+        setImageThumbnail(image);
     }
 
-      const onSubmit = (e) => {
-        /* 
-         e.preventDefault()
-          stops the default behavior of form element
-         specifically refreshing of page
-         */
+      const saveAppInfo = (e) => {
+
         e.preventDefault()
-        console.log(imageThumbnail)
+        const formData=new FormData();
+        formData.append('app_name',appName);
+        formData.append('app_description',appDescription);
+        formData.append('app_ipaddress',appIpAddress);
+        formData.append('app_url',appURL);
+        formData.append('app_thumbnail', imageThumbnail);
 
-        // axios.post('http://192.168.8.155/mint-intranet/public/api/create-new-app', {
-        //     app_name: appName,
-        //     app_description: appDescription,
-        //     app_ipaddress: appIpAddress,
-        //     app_url: appURL,
-        //     app_thumbnail:imageThumbnail
-        //   })
-        //   .then((response) => {
-        //     console.log(response);
-        //     })
-        //   .catch((error) => {
-        //     console.log(error);
-        //   });
-
-        //   console.log(appName)
+                    // send a POST request
+            axios.post(rootURI+'/create_new_app', formData)
+            .then((response)=>{
+                setSuccessMsg(response.data.success)
+            })
+              .catch((error)=>{
+                  console.log(error)
+              });        
       }
 
     return (
-        <div style={{marginTop:'70px'}}>
-            <h3>Create New Digital Service</h3>
-                <form onSubmit={onSubmit} encType="multipart/form-data">
+        <div style={{marginTop:'70px', marginLeft:'230px'}}>
+            <h3 className='appinfos_form_title'>Create New Digital Service</h3>
+                <form onSubmit={saveAppInfo} className='form_container'>
                     <div>
                     <input
+                        className='form_element'
                         type='text'
                         name='appName'
                         placeholder='Service Name'
@@ -76,6 +75,7 @@ function CreateNewAppInfo() {
                     <div>
 
                     <textarea
+                        className='form_element'
                         type='text'
                         name='appDescription'
                         placeholder='Service Description'
@@ -88,6 +88,7 @@ function CreateNewAppInfo() {
                     </div>
                     <div>
                     <input
+                        className='form_element'
                         type='text'
                         name='appURL'
                         placeholder='Service URL'
@@ -98,6 +99,7 @@ function CreateNewAppInfo() {
                     
                     <div>
                     <input
+                        className='form_element'
                         type='text'
                         name='appIpAddress'
                         placeholder='IP Address'
@@ -105,20 +107,38 @@ function CreateNewAppInfo() {
                         onChange={onAppIpAddressChange}
                     />
                     </div>
+
                     <div>
                     <input
+                        className='form_element'
                         type='file'
-                        name='imageThumbnail'
-                        placeholder='Image thumbnail'
-                        value={imageThumbnail}
                         onChange={onImagethumbnailChange}
                     />
                     </div>
-                    
-                    <button type='submit'>Submit</button>
+
+                    {imageThumbnail && (
+                        <div className='file_details'>
+                            <h2 style={{ textAlign:'center' }}>File Details</h2>
+                            <p>File Name: {imageThumbnail.name}</p>
+                            <p>File Type: {imageThumbnail.type}</p>
+                            <p>File Size: {(imageThumbnail.size)/1024} MB</p>
+                            <p className='image_display' style={{ maxWidth:'200px', maxHeight:'200px' }}> {imageThumbnail && <ImageThumb image={imageThumbnail} />}</p>
+                        </div>
+                    )}
+                   
+                    <button type='submit' className='form_submit_btn' onClick={saveAppInfo}>Save Service Info</button>
+
+                    {successMsg && <p className='successMsg'>{successMsg}</p>}
                 </form>
         </div>
     )
 }
 
 export default CreateNewAppInfo
+
+/**
+ * Component to display thumbnail of image.
+ */
+ const ImageThumb = ({ image }) => {
+    return <img src={URL.createObjectURL(image)} alt={image.name} />;
+  };
