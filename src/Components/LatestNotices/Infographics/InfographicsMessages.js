@@ -6,7 +6,10 @@ function InfographicsMessages() {
     const [infographicsMessages, setInfographicsMsg]=useState([]);
 
     useEffect(()=>{
-        fetchInfographicsMessages();
+        const interval=setInterval(()=>{
+            fetchInfographicsMessages();
+          }, 10000)  
+          return()=>clearInterval(interval)
      }, []);
  
      const fetchInfographicsMessages = async () => {

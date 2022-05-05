@@ -8,7 +8,10 @@ function AddressBooks() {
     const [directorateName, setDirectorateName]=useState([]);
 
     useEffect(()=>{
+      const interval=setInterval(()=>{
         fetchAddressesData();
+      }, 10000)  
+      return()=>clearInterval(interval)
      }, []);
 
      const fetchAddressesData = async () => {

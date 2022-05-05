@@ -3,12 +3,15 @@ import AppLists from './AppLists';
 import './AppInfos.css'
 import { rootURI } from '../rootURLs/root_uri';
 
-function AppInfos() {
+function AppInfos(setLoggedIn) {
     const [appsInfo, setAppsInfo]=useState([]);
     const [appName, setAppName]=useState([]);
 
     useEffect(()=>{
-       fetchAppsData();
+      const interval=setInterval(()=>{
+        fetchAppsData();
+      }, 10000)  
+      return()=>clearInterval(interval)
     }, []);
 
     const fetchAppsData = async () => {

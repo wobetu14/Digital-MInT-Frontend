@@ -1,14 +1,26 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { rootURI } from '../rootURLs/root_uri';
 import InfographicsMessages from './Infographics/InfographicsMessages';
 import LatestNotice from './LatestNotice';
 import './LatestNotices.css'
+import { faAdd, faHome } from '@fortawesome/free-solid-svg-icons';
+import axios from 'axios';
+import AdminArea from './AdminArea/AdminArea';
 
 function LatestNotices() {
     const [latestNotices, setLatestNotices]=useState([]);
+    const [isLogin, setLogin]=useState(false);
 
     useEffect(()=>{
-       fetchLatestNoticesData();
+      if(localStorage.getItem('token')){
+        setLogin(true);
+      }
+      const interval=setInterval(()=>{
+        fetchLatestNoticesData();
+      }, 10000)  
+      return()=>clearInterval(interval)
     }, []);
 
     const fetchLatestNoticesData = async () => {
@@ -30,6 +42,10 @@ function LatestNotices() {
                 <LatestNotice latestNotice={latestNotice} key={latestNotice.id} />
             ))
         }
+       </div>
+
+       <div>
+        {/* <AdminArea /> */}
        </div>
     </div>
   )

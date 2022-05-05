@@ -7,7 +7,10 @@ function DownloadableFiles() {
     const [fileTitle, setFileTitle]=useState([]);
 
     useEffect(()=>{
+      const interval=setInterval(()=>{
         fetchFilesData();
+      }, 10000)  
+      return()=>clearInterval(interval)
      }, []);
 
      const fetchFilesData = async () => {

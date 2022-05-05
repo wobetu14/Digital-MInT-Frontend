@@ -2,8 +2,10 @@ import React, { useState } from 'react'
 import axios from 'axios';
 import { rootURI } from '../rootURLs/root_uri';
 import '../FormStyles/FormStyles.css';
+import UserLogin from '../UserManagement/UserLogin';
+import CheckLogin from '../UserManagement/CheckLogin';
 
-function CreateNewAppInfo() {
+function CreateNewAppInfo({loggedIn, setLoggedIn}) {
 
     const [appName, setAppName]=useState('');
     const [appDescription, setAppDescription]=useState('');
@@ -48,8 +50,14 @@ function CreateNewAppInfo() {
         formData.append('app_url',appURL);
         formData.append('app_thumbnail', imageThumbnail);
 
+        const config={
+            headers:{
+              'Authorization': 'Bearer ' + localStorage.getItem('token'),
+            }
+          }
+
                     // send a POST request
-            axios.post(rootURI+'/create_new_app', formData)
+            axios.post(rootURI+'/create_new_app', formData, config)
             .then((response)=>{
                 setSuccessMsg(response.data.success)
             })
@@ -58,9 +66,14 @@ function CreateNewAppInfo() {
               });        
       }
 
+      if(!loggedIn){
+          return (<CheckLogin setLoggedIn={setLoggedIn} />)
+      }
+
     return (
         <div style={{marginTop:'70px', marginLeft:'230px'}}>
             <h3 className='appinfos_form_title'>Create New Digital Service</h3>
+              {successMsg && <p className='successMsg'>{successMsg}</p>}
                 <form onSubmit={saveAppInfo} className='form_container'>
                     <div>
                     <input
@@ -127,8 +140,6 @@ function CreateNewAppInfo() {
                     )}
                    
                     <button type='submit' className='form_submit_btn' onClick={saveAppInfo}>Save Service Info</button>
-
-                    {successMsg && <p className='successMsg'>{successMsg}</p>}
                 </form>
         </div>
     )

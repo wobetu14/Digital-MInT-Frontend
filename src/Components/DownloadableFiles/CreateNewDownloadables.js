@@ -1,8 +1,9 @@
 import axios from 'axios';
 import React, { useState } from 'react'
 import { rootURI } from '../rootURLs/root_uri';
+import CheckLogin from '../UserManagement/CheckLogin';
 
-function CreateNewDownloadables() {
+function CreateNewDownloadables({loggedIn, setLoggedIn}) {
   
     const [fileTitle, setFileTitle]=useState('');
     const [fileDescription, setFileDescription]=useState('');
@@ -54,9 +55,19 @@ function CreateNewDownloadables() {
                   console.log(error)
               }); 
     }
+
+    /**
+     * This page needs a user to be authenticated first. Check whether user is logged in
+     * or not first and deny access to it if he / she has not logged in.
+     */
+     
+    if(!loggedIn){
+        return (<CheckLogin setLoggedIn={setLoggedIn} />)
+    }
   return (
     <div style={{marginTop:'70px', marginLeft:'230px'}}>
         <h3 className='appinfos_form_title'>Upload New File</h3>
+            {successMsg && <p className='successMsg'>{successMsg}</p>}
                 <form onSubmit={uploadFile} className='form_container'>
                     <div>
                     <input
@@ -123,8 +134,6 @@ function CreateNewDownloadables() {
                     )}
                    
                     <button type='submit' className='form_submit_btn' onClick={uploadFile}>Save Notice</button>
-
-                    {successMsg && <p className='successMsg'>{successMsg}</p>}
                 </form>
     </div>
   )

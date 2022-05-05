@@ -9,7 +9,10 @@ function CorporateNotices() {
     const [corporateNotices, setCorporateNotices]=useState([]);
 
     useEffect(()=>{
-       fetchCorporateNoticesData();
+      const interval=setInterval(()=>{
+        fetchCorporateNoticesData();
+      }, 10000)  
+      return()=>clearInterval(interval)
     }, []);
 
     const fetchCorporateNoticesData = async () => {

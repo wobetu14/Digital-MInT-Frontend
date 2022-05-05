@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import axios from 'axios';
 import { rootURI } from '../rootURLs/root_uri';
+import UserLogin from '../UserManagement/UserLogin';
+import CheckLogin from '../UserManagement/CheckLogin';
 
-function CreateNewNotice() {
+function CreateNewNotice({loggedIn, setLoggedIn}) {
     const [noticeAudience, setNoticeAudience]=useState('');
     const [noticeOwner, setNoticeOwner]=useState('');
     const [noticeSubject, setNoticeSubject]=useState('');
@@ -44,8 +46,14 @@ function CreateNewNotice() {
         formData.append('notice_main_content',noticeMainContent);
         formData.append('notice_attachement',noticeAttachement);
 
+        const config={
+            headers:{
+              'Authorization': 'Bearer ' + localStorage.getItem('token'),
+            }
+          }
+
              // send a POST request
-            axios.post(rootURI+'/create_new_notice', formData)
+            axios.post(rootURI+'/create_new_notice', formData, config)
             .then((response)=>{
                 setSuccessMsg(response.data.success)
             })
@@ -53,9 +61,15 @@ function CreateNewNotice() {
                   console.log(error)
               }); 
     }
+
+    if(!loggedIn){
+        return (<CheckLogin setLoggedIn={setLoggedIn} />)
+    }
+
   return (
     <div style={{marginTop:'70px', marginLeft:'230px'}}>
         <h3 className='appinfos_form_title'>Create New Corporate Notice</h3>
+            {successMsg && <p className='successMsg'>{successMsg}</p>}
                 <form onSubmit={saveCorporateNotice} className='form_container'>
                     <div>
                     <input
@@ -125,8 +139,6 @@ function CreateNewNotice() {
                     )}
                    
                     <button type='submit' className='form_submit_btn' onClick={saveCorporateNotice}>Save Notice</button>
-
-                    {successMsg && <p className='successMsg'>{successMsg}</p>}
                 </form>
     </div>
   )

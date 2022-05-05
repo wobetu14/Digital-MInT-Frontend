@@ -14,22 +14,22 @@
 
 .form_element{
     width: 500px;
-    font-size: 20px;
+    font-size: 16px;
     /* color: #006eb8; */
     font-family:Arial, Helvetica, sans-serif;
     border: 1px solid #006eb8;
     border-color: #006eb8;
     margin-top: 10px;
-    padding: 15px;
+    padding: 10px;
     background-color:white;
 }
 
 .form_submit_btn{
     color: white;
-    background-color: #16A085;
-    border: solid 1px rgb(216, 214, 214);
-    font-size: 20px;
-    padding: 15px;
+    background-color: #006eb8;
+    border: solid 1px #006eb8; /* rgb(216, 214, 214); */
+    font-size: 16px;
+    padding: 10px;
     margin-top: 15px;
     padding-left: 10px;
     padding-right: 10px;
@@ -40,11 +40,11 @@
 
 .form_submit_btn:hover{
     cursor: pointer;
-    color: white;
-    background-color: #006eb8;
-    border: solid 1px rgb(216, 214, 214);
-    font-size: 20px;
-    padding: 15px;
+    color: black;
+    background-color: #F2F3F4; /*  #16A085 */
+    border: solid 1px #006eb8; /* rgb(216, 214, 214); */
+    font-size: 16px;
+    padding: 10px;
     margin-top: 15px;
     padding-left: 10px;
     padding-right: 10px;
@@ -54,7 +54,7 @@
 
 .successMsg{
     color: white;
-    background-color: 16A085;
+    background-color: #16A085;
     padding: 10px;
     font-size: 20px;
     margin-top: 10px;

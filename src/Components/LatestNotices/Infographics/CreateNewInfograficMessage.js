@@ -1,14 +1,15 @@
 import axios from 'axios';
 import React, { useState } from 'react'
 import { rootURI } from '../../rootURLs/root_uri';
+import CheckLogin from '../../UserManagement/CheckLogin';
 
-function CreateNewInfograficMessage() {
+function CreateNewInfograficMessage({loggedIn, setLoggedIn}) {
 
     const [infographicsSubject, setInfographicsSubject]=useState('');
     const [infographicsDescription, setInfographicsDescription]=useState('');
     const [imagePath, setImagePath]=useState('');
     const [displayDuration, setDisplayDuration]=useState('');
-    const [displayStatus, setDisplayStatus]=useState('active');
+    const [displayStatus]=useState('active');
 
     // Display Response Message
     const [successMsg, setSuccessMsg]=useState('');
@@ -50,9 +51,19 @@ function CreateNewInfograficMessage() {
                   console.log(error)
               }); 
     }
+
+    /** This page needs a user to be authenticated first. Check whether user is logged in
+    * or not first and deny access to it if he / she has not logged in.
+    */
+    
+   if(!loggedIn){
+       return (<CheckLogin setLoggedIn={setLoggedIn} />)
+   }
+
   return (
     <div style={{marginTop:'70px', marginLeft:'230px'}}>
-        <h3 className='appinfos_form_title'>Create New Corporate Notice</h3>
+        <h3 className='appinfos_form_title'>Create New Infographic Message</h3>
+            {successMsg && <p className='successMsg'>{successMsg}</p>}
                 <form onSubmit={saveInfographicsMsg} className='form_container'>
                     <div>
                     <input
@@ -112,8 +123,6 @@ function CreateNewInfograficMessage() {
                     )}
                    
                     <button type='submit' className='form_submit_btn' onClick={saveInfographicsMsg}>Save Infographics Message</button>
-
-                    {successMsg && <p className='successMsg'>{successMsg}</p>}
                 </form>
     </div>
   )
