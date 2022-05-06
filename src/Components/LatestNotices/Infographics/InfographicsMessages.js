@@ -6,6 +6,13 @@ function InfographicsMessages() {
     const [infographicsMessages, setInfographicsMsg]=useState([]);
 
     useEffect(()=>{
+            fetchInfographicsMessages();
+     }, []);
+
+     /**
+      * Sync in every 10 seconds
+      */
+      useEffect(()=>{
         const interval=setInterval(()=>{
             fetchInfographicsMessages();
           }, 10000)  

@@ -8,12 +8,21 @@ function CorporateNotices() {
 
     const [corporateNotices, setCorporateNotices]=useState([]);
 
+         useEffect(()=>{
+          fetchCorporateNoticesData();
+         }, []);
+
+        /**
+         * Sync in every 10 seconds
+         */
+
     useEffect(()=>{
       const interval=setInterval(()=>{
         fetchCorporateNoticesData();
       }, 10000)  
       return()=>clearInterval(interval)
     }, []);
+
 
     const fetchCorporateNoticesData = async () => {
       const url = rootURI+'/corporate_notices';

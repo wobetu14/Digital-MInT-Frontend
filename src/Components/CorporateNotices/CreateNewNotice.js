@@ -4,7 +4,7 @@ import { rootURI } from '../rootURLs/root_uri';
 import UserLogin from '../UserManagement/UserLogin';
 import CheckLogin from '../UserManagement/CheckLogin';
 
-function CreateNewNotice({loggedIn, setLoggedIn}) {
+function CreateNewNotice({loggedIn, setLoggedIn, userData, setUserData}) {
     const [noticeAudience, setNoticeAudience]=useState('');
     const [noticeOwner, setNoticeOwner]=useState('');
     const [noticeSubject, setNoticeSubject]=useState('');
@@ -63,7 +63,7 @@ function CreateNewNotice({loggedIn, setLoggedIn}) {
     }
 
     if(!loggedIn){
-        return (<CheckLogin setLoggedIn={setLoggedIn} />)
+        return (<CheckLogin loggedIn={loggedIn} setLoggedIn={setLoggedIn} userData={userData} setUserData={setUserData}/>)
     }
 
   return (

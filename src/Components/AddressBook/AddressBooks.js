@@ -8,6 +8,13 @@ function AddressBooks() {
     const [directorateName, setDirectorateName]=useState([]);
 
     useEffect(()=>{
+        fetchAddressesData();
+     }, []);
+
+     /**
+      * Sync in every 10 seconds
+      */
+     useEffect(()=>{
       const interval=setInterval(()=>{
         fetchAddressesData();
       }, 10000)  

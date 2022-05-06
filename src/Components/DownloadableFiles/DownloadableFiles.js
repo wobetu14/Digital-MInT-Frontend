@@ -7,6 +7,14 @@ function DownloadableFiles() {
     const [fileTitle, setFileTitle]=useState([]);
 
     useEffect(()=>{
+        fetchFilesData();
+     }, []);
+
+     
+     /**
+      * Sync in every 10 second
+      */
+     useEffect(()=>{
       const interval=setInterval(()=>{
         fetchFilesData();
       }, 10000)  

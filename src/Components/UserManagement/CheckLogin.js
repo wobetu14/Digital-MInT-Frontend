@@ -1,7 +1,10 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
+import { rootURI } from '../rootURLs/root_uri';
 import UserLogin from './UserLogin';
 
-function CheckLogin({setLoggedIn}) {
+function CheckLogin({loggedIn, setLoggedIn, userData, setUserData}) {
+
         const pStyle={
             marginTop:'70px',
             marginBottom:'0px',
@@ -18,7 +21,7 @@ function CheckLogin({setLoggedIn}) {
          <div>
             <p style={pStyle}>Access to this page requires a user login!. Please login first
             </p>
-          <UserLogin setLoggedIn={setLoggedIn} />
+          <UserLogin loggedIn={loggedIn} setLoggedIn={setLoggedIn} userData={userData} setUserData={setUserData}/>
          </div>
         );
      

@@ -25,13 +25,12 @@ function App() {
       'Authorization': 'Bearer ' + localStorage.getItem('token'),
     }
   }
-  
-  
+
   useEffect(()=>{
     axios.get(rootURI+'/auth_user', config)
     .then((response)=>{
-      setUserData(response.data);
       setLoggedIn(true);
+      setUserData(response.data);
     })
     .catch((error)=>{
       console.log(error);
@@ -54,13 +53,13 @@ function App() {
                 <Route path='*' element={<PageNotFound />} />
 
                 {/* User authentication routes */}
-                <Route path='/login' element={<UserLogin setLoggedIn={setLoggedIn}/>} />
+                <Route path='/login' element={<UserLogin setLoggedIn={setLoggedIn} userData={userData} setUserData={setUserData}/>} />
 
                 {/* Administrative Routes */}
-                <Route path='/create_service' element={<CreateNewAppInfo loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>} />
-                <Route path='/create_notice' element={<CreateNewNotice loggedIn={loggedIn} setLoggedIn={setLoggedIn} />} />
-                <Route path='/upload_file' element={<CreateNewDownloadables loggedIn={loggedIn}  setLoggedIn={setLoggedIn} />} />
-                <Route path='/create_infographic_message' element={<CreateNewInfograficMessage loggedIn={loggedIn} setLoggedIn={setLoggedIn}  />} />
+                <Route path='/create_service' element={<CreateNewAppInfo loggedIn={loggedIn} setLoggedIn={setLoggedIn} userData={userData} setUserData={setUserData}/>} />
+                <Route path='/create_notice' element={<CreateNewNotice loggedIn={loggedIn} setLoggedIn={setLoggedIn} userData={userData} setUserData={setUserData}/>} />
+                <Route path='/upload_file' element={<CreateNewDownloadables loggedIn={loggedIn}  setLoggedIn={setLoggedIn} userData={userData} setUserData={setUserData}/>} />
+                <Route path='/create_infographic_message' element={<CreateNewInfograficMessage loggedIn={loggedIn} setLoggedIn={setLoggedIn}  userData={userData} setUserData={setUserData}/>} />
               </Routes>
           </BrowserRouter>
           <Outlet />

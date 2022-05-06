@@ -8,6 +8,10 @@ function AppInfos(setLoggedIn) {
     const [appName, setAppName]=useState([]);
 
     useEffect(()=>{
+        fetchAppsData();
+    }, []);
+
+    useEffect(()=>{
       const interval=setInterval(()=>{
         fetchAppsData();
       }, 10000)  

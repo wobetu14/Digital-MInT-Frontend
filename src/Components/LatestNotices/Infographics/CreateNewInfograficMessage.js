@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { rootURI } from '../../rootURLs/root_uri';
 import CheckLogin from '../../UserManagement/CheckLogin';
 
-function CreateNewInfograficMessage({loggedIn, setLoggedIn}) {
+function CreateNewInfograficMessage({loggedIn, setLoggedIn, userData, setUserData}) {
 
     const [infographicsSubject, setInfographicsSubject]=useState('');
     const [infographicsDescription, setInfographicsDescription]=useState('');
@@ -56,9 +56,9 @@ function CreateNewInfograficMessage({loggedIn, setLoggedIn}) {
     * or not first and deny access to it if he / she has not logged in.
     */
     
-   if(!loggedIn){
-       return (<CheckLogin setLoggedIn={setLoggedIn} />)
-   }
+     if(!loggedIn){
+        return (<CheckLogin loggedIn={loggedIn} setLoggedIn={setLoggedIn} userData={userData} setUserData={setUserData}/>)
+    }
 
   return (
     <div style={{marginTop:'70px', marginLeft:'230px'}}>

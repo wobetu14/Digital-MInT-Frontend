@@ -1,25 +1,33 @@
 import axios from 'axios';
 import React, { useState } from 'react'
-import { Navigate } from 'react-router-dom';
+import {Navigate } from 'react-router-dom';
 import { rootURI } from '../rootURLs/root_uri';
 
-function UserLogin({setLoggedIn}) {
+function UserLogin({setLoggedIn, setUserData}) {
     const [email, setEmail]=useState('');
     const [password, setPassword]=useState('');
 
     const handleLogin=(e)=>{
         e.preventDefault();
-      const userData={
+      const userCreds={
           email:email,
           password:password
       }
  
 
-      axios.post(rootURI+'/login', userData )
+      axios.post(rootURI+'/login', userCreds)
       .then((response)=>{
+        if(response.data.logged_in===1){
+          setLoggedIn(true);
           localStorage.setItem('token', response.data.token);
-          setLoggedIn(true)
+          setUserData(response.data.user);
+          console.log("Token: "+localStorage.getItem('token'));
           return <Navigate to={'/'} />
+        }
+
+        else{
+          alert(response.data.login_error);
+        }
       })
       .catch((error)=>{
           alert(error)

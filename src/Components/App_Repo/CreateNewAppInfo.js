@@ -5,7 +5,7 @@ import '../FormStyles/FormStyles.css';
 import UserLogin from '../UserManagement/UserLogin';
 import CheckLogin from '../UserManagement/CheckLogin';
 
-function CreateNewAppInfo({loggedIn, setLoggedIn}) {
+function CreateNewAppInfo({loggedIn, setLoggedIn, userData, setUserData}) {
 
     const [appName, setAppName]=useState('');
     const [appDescription, setAppDescription]=useState('');
@@ -14,6 +14,13 @@ function CreateNewAppInfo({loggedIn, setLoggedIn}) {
     const [imageThumbnail, setImageThumbnail]=useState('');
 
     const [successMsg, setSuccessMsg]=useState('');
+
+
+    if(!loggedIn){
+        return (<CheckLogin loggedIn={loggedIn} setLoggedIn={setLoggedIn} userData={userData} setUserData={setUserData}/>)
+    }
+
+    // Fetch Authenticated user data
 
     const onAppNameChange=(e)=>{
         const getAppName=e.target.value;
@@ -64,10 +71,6 @@ function CreateNewAppInfo({loggedIn, setLoggedIn}) {
               .catch((error)=>{
                   console.log(error)
               });        
-      }
-
-      if(!loggedIn){
-          return (<CheckLogin setLoggedIn={setLoggedIn} />)
       }
 
     return (

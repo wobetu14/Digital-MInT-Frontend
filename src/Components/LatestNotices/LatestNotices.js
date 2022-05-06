@@ -11,12 +11,15 @@ import AdminArea from './AdminArea/AdminArea';
 
 function LatestNotices() {
     const [latestNotices, setLatestNotices]=useState([]);
-    const [isLogin, setLogin]=useState(false);
 
     useEffect(()=>{
-      if(localStorage.getItem('token')){
-        setLogin(true);
-      }
+        fetchLatestNoticesData();
+    }, []);
+
+    /**
+     * Sync in every 10 seconds
+     */
+    useEffect(()=>{
       const interval=setInterval(()=>{
         fetchLatestNoticesData();
       }, 10000)  
